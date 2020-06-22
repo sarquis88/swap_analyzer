@@ -14,15 +14,10 @@ main()
     while ( 1 )
       {
         entry++;
-
         read_swap_info( swap );
-
         read_load_info( load );
-
         parse_info( info, swap, load );
-
         write_log( info );
-
         sleep();
       }
   }
@@ -55,6 +50,7 @@ read_swap_info( char *buffer )
         fgets(line, INFO_SIZE, file);
 
         char *aux = strtok(line, "\t");
+        aux = strtok(NULL, "\t");
         aux = strtok(NULL, "\t");
 
         sprintf(buffer, "%s", aux);

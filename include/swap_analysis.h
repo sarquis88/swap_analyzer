@@ -5,7 +5,7 @@
 
 #define INFO_SIZE             128
 #define SWAP_SIZE             16
-#define LOAD_SIZE             4
+#define LOAD_SIZE             8
 #define SLEEP_S_TIME          3
 #define SLEEP_NS_TIME         0
 

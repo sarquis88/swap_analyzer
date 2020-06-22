@@ -1,4 +1,4 @@
-#include "../include/swap_analysis.h"
+#include "../include/swap_analyzer.h"
 
 int
 main()

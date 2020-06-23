@@ -1,2 +1,4 @@
 # Swap analyzer
-Correr collector y luego analyzer
+* Run collector
+* Wait for many entries
+* Run analyzer

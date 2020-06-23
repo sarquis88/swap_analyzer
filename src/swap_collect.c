@@ -25,13 +25,15 @@ main()
 void
 init_log()
   {
-    FILE *file = fopen("/var/log/swap_analysis.log", "w+");
+    FILE *file = fopen(LOG_PATH, "w+");
 
     if( file != NULL)
       {
         char msg[INFO_SIZE];
-        sprintf(msg,  "-Swap analysis-\n\nNew entry each %d second/s\n\n"
-                      , SLEEP_S_TIME);
+        char timestamp[TIMESTAMP_SIZE];
+        get_timestamp( timestamp );
+        sprintf(msg,  "-Swap analysis-\n\nNew entry each %d second/s\n\n%s\n\n"
+                      , SLEEP_S_TIME, timestamp);
         fprintf(file, "%s<entry>\t\t<swap size>[MB]\t\t<CPU load average>\n",
                       msg);
       }
@@ -75,7 +77,7 @@ parse_info( char *buffer, char *swap, char *load)
 void
 write_log( char *info )
   {
-    FILE *file = fopen("/var/log/swap_analysis.log", "a");
+    FILE *file = fopen(LOG_PATH, "a");
 
     if( file != NULL)
       {

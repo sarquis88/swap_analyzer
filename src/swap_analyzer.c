@@ -88,25 +88,36 @@ print_parsed_info( long int * swap_info, long int size )
     unused = total - max;
     recom = (int) (total - unused);
     recom = (int) (recom * 1.5);
+    if (recom == 0)
+      {
+        recom = (int) total;
+        recom = (int) (recom * 0.1);
+      }
 
     max_percent = ( (double) max / (double) total ) * 100;
     min_percent = ( (double) min / (double) total ) * 100;
     avg_percent = ( (double) avg / (double) total ) * 100;
     unused_percent = ( (double) unused / (double) total ) * 100;
 
-    printf("\n#############################################################\n");
-    printf(  "####################### Swap analyzer #######################\n");
-    printf(  "#############################################################\n\n");
+    printf("\n###########################################################\n");
+    printf("###################### Swap analyzer ######################\n");
+    printf("###########################################################\n\n");
     printf("Data extracted from %ld entries\n", size);
     printf("See the entire log in %s\n\n", LOG_PATH);
     printf("Analysis started: \t\t%s\n", analysis_start);
     printf("Analysis finished: \t\t%s\n\n", timestamp);
-    printf("Average swap memory used: \t%ld MB (%.0f%c of total)\n", avg, avg_percent, 37);
-    printf("Maximum swap memory used: \t%ld MB (%.0f%c of total)\n", max, max_percent, 37);
-    printf("Minimum swap memory used: \t%ld MB (%.0f%c of total)\n\n", min, min_percent, 37);
-    printf("Total swap memory size: \t%s MB\n", total_swap);
-    printf("Minimum unused swap memory: \t%ld MB (%.0f%c of total)\n\n", unused, unused_percent, 37);
-    printf("Posible new swap memory size: \t%d MB (150%c of max. used)\n\n", recom, 37);
+    printf( "Average swap memory used: \t%ld MB (%.0f%c of total)\n",
+            avg, avg_percent, 37);
+    printf( "Maximum swap memory used: \t%ld MB (%.0f%c of total)\n",
+            max, max_percent, 37);
+    printf( "Minimum swap memory used: \t%ld MB (%.0f%c of total)\n\n",
+            min, min_percent, 37);
+    printf( "Total swap memory size: \t%s MB\n", total_swap);
+    printf( "Minimum unused swap memory: \t%ld MB (%.0f%c of total)\n\n",
+            unused, unused_percent, 37);
+    printf( "Posible new swap memory size: \t%d MB (150%c of max. \n"
+            "used, or 10%c of total if max. used is zero)\n\n",
+            recom, 37, 37);
   }
 
 void

@@ -1,6 +1,6 @@
 #include "../include/swap_analyzer.h"
 
-unsigned long entry;
+unsigned int entry;
 
 int
 main()
@@ -32,7 +32,7 @@ init_log()
         get_timestamp( timestamp );
         sprintf(msg,  "-Swap analysis-\n\nNew entry each %d second/s\n\n%s\n\n"
                       , SLEEP_S_TIME, timestamp);
-        fprintf(file, "%s<entry>\t\t<swap size>[MB]\n", msg);
+        fprintf(file, "%s<entry>\t\t<swap used>[MB]\n", msg);
       }
     fclose( file );
   }
@@ -52,6 +52,8 @@ read_swap_info( char *buffer )
         aux = strtok(NULL, "\t");
         aux = strtok(NULL, "\t");
 
+        aux[ strlen(aux) - 3 ] = '\0'; // division por mil
+
         sprintf(buffer, "%s", aux);
       }
     fclose( file );
@@ -60,7 +62,7 @@ read_swap_info( char *buffer )
 void
 parse_info( char *buffer, char *swap)
   {
-    sprintf( buffer, "%ld\t\t%s", entry, swap);
+    sprintf( buffer, "%d\t\t%s", entry, swap);
   }
 
 void

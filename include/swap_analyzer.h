@@ -18,10 +18,10 @@ void parse_info                   ( char *buffer, char *swap );
 void write_log                    ( char * info);
 void sleep                        ( );
 
-long int get_info_size            ( );
-void get_info                     ( long int * swap_info );
-void print_parsed_info            ( long int * swap_info, long int size );
+int get_info_size                 ( );
+void get_info                     ( int * swap_info );
+void print_parsed_info            ( int * swap_info, int size );
 void get_analysis_start           ( char *analysis_start );
-void get_total_swap              ( char *total_swap );
+void get_total_swap               ( char *total_swap );
 
 void get_timestamp                ( char *buffer );

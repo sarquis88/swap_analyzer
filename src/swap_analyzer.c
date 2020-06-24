@@ -148,6 +148,8 @@ get_total_swap( char *total_swap)
         char *aux = strtok(line, "\t");
         aux = strtok(NULL, "\t");
 
+        aux[ strlen(aux) - 3 ] = '\0';
+
         sprintf(total_swap, "%s", aux);
       }
     fclose( file );
